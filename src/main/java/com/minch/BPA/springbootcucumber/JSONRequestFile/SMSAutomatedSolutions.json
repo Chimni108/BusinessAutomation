@@ -1,0 +1,166 @@
+{
+  "sections":
+  [
+    {
+      "orderSectionId": null,
+      "orderLines":
+      [
+        {
+          "configs":
+          [
+            {
+              "config":
+              {
+                "displayName": "",
+                "billingAccount":
+                {
+                  "countryCode": "sweden",
+                  "currencyCode": "SEK"
+                }
+              },
+              "quantity":5,
+              "id": "c0d68eba-52d4-4c20-a7f9-11b2ea3b144d"
+            }
+          ],
+          "sku": "SMS.ACCOUNT.NOVA",
+          "status": "NEW",
+          "orderLineId": "144d01"
+        },
+        {
+          "configs": [
+            {
+              "config": {
+                "displayName": "Test Project",
+                "novaAccountId": {
+                  "type": "ASSET_CONFIG_LINK_POP",
+                  "sku": "SMS.ACCOUNT.NOVA",
+                  "assetConfigLink": {
+                    "type": "JSON_POINTER",
+                    "expr": "/novaAccountId"
+                  },
+                  "configId": "c0d68eba-52d4-4c20-a7f9-11b2ea3b144d"
+                }
+              },
+              "quantity": 5,
+              "id": "cb5a1db4-bd52-4178-ac75-a738397a7e9d"
+            }
+          ],
+          "sku": "COMMON.PROJECT.NOVA",
+          "status": "NEW",
+          "orderLineId": "abcxyz144d01"
+        },
+        {
+          "configs": [
+            {
+              "config": {
+                "isoCountrycode": "SE",
+                "routingProfileId": "abc123",
+                "siteGroupIds": [
+                  23
+                ],
+                "projectId": {
+                  "type": "ASSET_CONFIG_LINK_NOP",
+                  "sku": "COMMON.PROJECT.NOVA",
+                  "assetConfigLink": {
+                    "type": "JSON_POINTER",
+                    "expr": "/projectId"
+                  },
+                  "configId": "c0d68eba-52d4-4c20-a7f9-11b2ccd"
+                }
+              },
+              "quantity": 5,
+              "id": "confse12"
+            },
+            {
+              "config": {
+                "isoCountrycode": "GB",
+                "routingProfileId": "abc123",
+                "siteGroupIds": [
+                  23
+                ],
+                "projectId": {
+                  "type": "ASSET_CONFIG_LINK_NOP",
+                  "sku": "COMMON.PROJECT.NOVA",
+                  "assetConfigLink": {
+                    "type": "JSON_POINTER",
+                    "expr": "/projectId"
+                  },
+                  "configId": "c0d68eba-52d4-4c20-a7f9-11b2kbc"
+                }
+              },
+              "quantity": 5,
+              "id": "confsgb123456"
+            }
+          ],
+          "sku": "SMS.1WAY-ROW.NOVA",
+          "status": "NEW",
+          "orderLineId": "MNQIJK144d01"
+        }
+      ],
+      "basePriceBook": {
+        "solutionUri": "https://smart-solution.eu1tst.bpa.unauth.int.staging.minch.com/examples/solution.sms-automated.nova.json",
+        "version": "1970-01-01",
+        "priceBookId": "PROD.PHASE1.SEK"
+      }
+    }
+  ],
+  "seller": {
+    "contacts": {
+      "support": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      },
+      "primary": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      },
+      "finance": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      }
+    },
+    "address": {
+      "country": "US"
+    },
+    "novaShortName": "Interconnect",
+    "registeredName": "minch Interconnect, LLC"
+  },
+  "buyer": {
+    "website": "https://www.microsoft.com",
+    "taxId": "89898989",
+    "registrationNr": "546789625",
+    "corporateName": "MICROSOFT CORPORATION",
+    "contacts": {
+      "primary": {
+        "phone": "425-722-1724",
+        "displayName": "Vidyasankar Ram",
+        "email": "vidraman@microsoft.cominvalidated",
+        "contactId": "0037R00002tWgJxQAK"
+      },
+      "finance": {
+        "phone": "425-722-1724",
+        "displayName": "Vidyasankar Ram",
+        "email": "vidraman@microsoft.cominvalidated",
+        "contactId": "0037R00002tWgJxQAK"
+      }
+    },
+    "address": {
+      "postalCode": "980528300",
+      "country": "US",
+      "stateOrProvince": "WA",
+      "city": "Redmond",
+      "line1": "1 MICROSOFT WAY"
+    },
+    "crmAccountId": "0017R00002W5pE6QAJ",
+    "buyerId": ""
+  },
+  "commercial": {
+    "paymentCurrency": "USD",
+    "contractTerm": "FIXED",
+    "billingOption": "PREPAY",
+    "billingCurrency": "USD",
+    "billingAccountId": "b7a11eb6c9d04fb092dd76b73b39d19b"
+  },
+  "approvalStatus": "UNDECIDED",
+  "status": "IN_DRAFT"
+}

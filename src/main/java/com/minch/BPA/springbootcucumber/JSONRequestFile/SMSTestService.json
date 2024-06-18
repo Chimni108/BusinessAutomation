@@ -1,0 +1,91 @@
+{
+  "sections": [
+    {
+      "orderSectionId": null,
+      "orderLines": [
+        {
+          "configs": [
+            {
+              "config": {
+                "campaignId": "TY678",
+                "orderNumber": "133423",
+                "shortCode": "sra",
+                "tariff": "Standard (5555)"
+              },
+              "quantity": 1,
+              "id": "96117257-90b4-40cc-a690-e0e0074035fc"
+            }
+          ],
+          "charges": [],
+          "sku": "SMS.ADD-VERIZON-CAMPAIGN-ID.NOVA",
+          "status": "NEW"
+        }
+      ],
+      "basePriceBook": {
+        "solutionUri": "https://smart-solution.eu1tst.bpa.unauth.int.staging.minch.com/examples/solution.sms-mario-edit-existing-products.json",
+        "version": "1970-01-01",
+        "priceBookId": ""
+      }
+    }
+  ],
+  "seller": {
+    "contacts": {
+      "support": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      },
+      "primary": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      },
+      "finance": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      }
+    },
+    "address": {
+      "country": "DK"
+    },
+    "novaShortName": "DK AB",
+    "registeredName": "minch Denmark AB"
+  },
+  "buyer": {
+    "website": "https://www.microsoft.com",
+    "taxId": "89898989",
+    "existingCustomer": false,
+    "registrationNr": "546789625",
+    "corporateName": "MICROSOFT CORPORATION",
+    "contacts": {
+      "primary": {
+        "phone": "",
+        "displayName": "Trambak Swami",
+        "email": "v-trswam@microsoft.cominvalidated",
+        "contactId": "0037R00002tWfrnQAC"
+      },
+      "finance": {
+        "phone": "",
+        "displayName": "Trambak Swami",
+        "email": "v-trswam@microsoft.cominvalidated",
+        "contactId": "0037R00002tWfrnQAC"
+      }
+    },
+    "address": {
+      "postalCode": "980528300",
+      "country": "US",
+      "stateOrProvince": "WA",
+      "city": "Redmond",
+      "line1": "1 MICROSOFT WAY"
+    },
+    "crmAccountId": "0017R00002W5pE6QAJ",
+    "buyerId": ""
+  },
+  "commercial": {
+    "paymentCurrency": "USD",
+    "contractTerm": "FIXED",
+    "billingOption": "PREPAY",
+    "billingCurrency": "USD",
+    "billingAccountId": "b7a11eb6c9d04fb092dd76b73b39d19b"
+  },
+  "approvalStatus": "UNDECIDED",
+  "status": "IN_DRAFT"
+}

@@ -1,0 +1,313 @@
+{
+  "sections": [
+    {
+      "orderSectionId": null,
+      "orderLines": [
+        {
+          "estimatedUsage": [
+            {
+              "usageByDim": [
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Deutsche Telekom"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Telefonica O2"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Vodafone"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Tele2"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Telenor"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Telia"
+                  }
+                }
+              ],
+              "unit": "Inbound"
+            },
+            {
+              "usageByDim": [
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Deutsche Telekom"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Telefonica O2"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Vodafone"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Tele2"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Telenor"
+                  }
+                },
+                {
+                  "usage": 1,
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Telia"
+                  }
+                }
+              ],
+              "unit": "Outbound"
+            }
+          ],
+          "configs": [
+            {
+              "config": {
+                "isoCountryCode": "AD",
+                "projectId": "e1ea0571-2a25-4967-b46d-752b1fd90d17",
+                "routingProfileId": "qwerx",
+                "siteGroupIds": [
+                  23
+                ]
+              },
+              "quantity": 1,
+              "id": "36e516ed-8460-4559-97d7-3e1b92a62c40"
+            }
+          ],
+          "charges": [
+            {
+              "priceByUnitByDim": [
+                {
+                  "priceByUnit": [
+                    {
+                      "price": 0.01,
+                      "unit": "Inbound"
+                    },
+                    {
+                      "price": 0.01,
+                      "unit": "Outbound"
+                    }
+                  ],
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Telia"
+                  }
+                },
+                {
+                  "priceByUnit": [
+                    {
+                      "price": 0.01,
+                      "unit": "Inbound"
+                    },
+                    {
+                      "price": 0.01,
+                      "unit": "Outbound"
+                    }
+                  ],
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Tele2"
+                  }
+                },
+                {
+                  "priceByUnit": [
+                    {
+                      "price": 0.01,
+                      "unit": "Inbound"
+                    },
+                    {
+                      "price": 0.01,
+                      "unit": "Outbound"
+                    }
+                  ],
+                  "dim": {
+                    "country": "SE",
+                    "mccmnc": 12345,
+                    "operator": "Telenor"
+                  }
+                },
+                {
+                  "priceByUnit": [
+                    {
+                      "price": 0.01,
+                      "unit": "Inbound"
+                    },
+                    {
+                      "price": 0.01,
+                      "unit": "Outbound"
+                    }
+                  ],
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Deutsche Telekom"
+                  }
+                },
+                {
+                  "priceByUnit": [
+                    {
+                      "price": 0.01,
+                      "unit": "Inbound"
+                    },
+                    {
+                      "price": 0.01,
+                      "unit": "Outbound"
+                    }
+                  ],
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Vodafone"
+                  }
+                },
+                {
+                  "priceByUnit": [
+                    {
+                      "price": 0.01,
+                      "unit": "Inbound"
+                    },
+                    {
+                      "price": 0.01,
+                      "unit": "Outbound"
+                    }
+                  ],
+                  "dim": {
+                    "country": "DE",
+                    "mccmnc": 12345,
+                    "operator": "Telefonica O2"
+                  }
+                }
+              ],
+              "units": [
+                "Inbound",
+                "Outbound"
+              ],
+              "type": "CHARGE_PER_DIM_UNIT_OPT_SEG"
+            }
+          ],
+          "sku": "SMS.1WAY-ROW.NOVA",
+          "status": "NEW"
+        }
+      ],
+      "basePriceBook": {
+        "solutionUri": "https://smart-solution.eu1tst.bpa.unauth.int.staging.minch.com/v1alpha1/examples/solution.sms-automated.nova.json",
+        "version": "2020-08-16",
+        "priceBookId": "PROD.PHASE1.SEK"
+      }
+    }
+  ],
+  "seller": {
+    "contacts": {
+      "support": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      },
+      "primary": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      },
+      "finance": {
+        "displayName": "TBD",
+        "email": "TBD@example.minch.com"
+      }
+    },
+    "address": {
+      "country": "DK"
+    },
+    "novaShortName": "DK AB",
+    "registeredName": "minch Denmark AB"
+  },
+  "buyer": {
+    "website": "https://www.microsoft.com",
+    "taxId": "89898989",
+    "existingCustomer": false,
+    "registrationNr": "546789625",
+    "corporateName": "MICROSOFT CORPORATION",
+    "contacts": {
+      "primary": {
+        "phone": "",
+        "displayName": "Trambak Swami",
+        "email": "v-trswam@microsoft.cominvalidated",
+        "contactId": "0037R00002tWfrnQAC"
+      },
+      "finance": {
+        "phone": "",
+        "displayName": "Trambak Swami",
+        "email": "v-trswam@microsoft.cominvalidated",
+        "contactId": "0037R00002tWfrnQAC"
+      }
+    },
+    "address": {
+      "postalCode": "980528300",
+      "country": "US",
+      "stateOrProvince": "WA",
+      "city": "Redmond",
+      "line1": "1 MICROSOFT WAY"
+    },
+    "crmAccountId": "0017R00002W5pE6QAJ",
+    "buyerId": ""
+  },
+  "commercial": {
+    "paymentCurrency": "SEK",
+    "contractTerm": "FIXED",
+    "billingOption": "PREPAY",
+    "billingCurrency": "SEK",
+    "billingAccountId": "50d9cf47e55444fe9ef4ec181dc5b7d1"
+  },
+  "approvalStatus": "UNDECIDED",
+  "status": "IN_DRAFT"
+}

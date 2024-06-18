@@ -1,0 +1,102 @@
+plugins {
+	id 'java'
+	id "com.google.protobuf" version "0.8.17"
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+repositories {
+	mavenCentral()
+}
+
+description = "BPA_Automation"
+
+def grpcVersion = '1.44.0'
+def cucumberVersion= '7.2.3'
+dependencies {
+	implementation "io.grpc:grpc-netty:${grpcVersion}"
+	implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
+	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+	implementation "io.grpc:grpc-stub:${grpcVersion}"
+	implementation "io.grpc:grpc-api:${grpcVersion}"
+	implementation 'net.devh:grpc-client-spring-boot-starter:2.11.0.RELEASE' exclude group: 'io.grpc', module: 'grpc-netty-shaded'
+	implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.12.2'
+	implementation group: "javax.annotation", name: "javax.annotation-api", version: "1.3.2"
+	implementation group: "org.jetbrains", name: "annotations", version: '22.0.0'
+	//Cucumber Dependencies
+	implementation "io.cucumber:cucumber-java:${cucumberVersion}"
+//    testImplementation "io.cucumber:cucumber-core:${cucumberVersion}"
+	implementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+	implementation "io.cucumber:cucumber-spring:${cucumberVersion}"
+
+	implementation 'org.onosproject:io_grpc_grpc_stub:2.7.0'
+	implementation 'io.grpc:grpc-okhttp:1.44.0'
+	compileOnly "io.cucumber:cucumber-spring:${cucumberVersion}"
+	//Logger Dependencies
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	//for Graylog -> json format
+	implementation "ch.qos.logback.contrib:logback-json-classic:0.1.5"
+	implementation "ch.qos.logback.contrib:logback-jackson:0.1.5"
+	implementation 'ch.qos.logback:logback-classic:1.2.10'
+	//junit Dependencies
+	implementation group: 'junit', name: 'junit', version: '4.13.2'
+	implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+	implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+	//For Extent Report
+	implementation group: 'net.masterthought', name: 'cucumber-reporting', version: '5.5.4'
+	implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.8'
+	implementation group: 'tech.grasshopper', name: 'extent-pdf-report', version: '1.7.3'
+	implementation group: 'tech.grasshopper', name: 'extentreports-cucumber6-adapter', version: '2.8.3'
+
+	//Dependencies for spring framework
+	implementation('org.springframework.boot:spring-boot-starter-test')
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.3'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
+
+	//javax annotation and jetbrains
+	//compileOnly group: "javax.annotation", name: "javax.annotation-api", version: "1.3.2"
+	//compileOnly group: "org.jetbrains", name: "annotations", version: "13.0"
+
+	implementation group: "org.jetbrains", name: "annotations", version: '22.0.0'
+
+	// javax json api
+	implementation group: 'javax.json', name: 'javax.json-api', version: '1.1.4'
+	implementation group: 'org.glassfish', name: 'jakarta.json', version: '2.0.1'
+
+	//restassured dependencies
+	implementation 'io.rest-assured:rest-assured:3.0.0'
+
+	//Json
+	implementation 'com.googlecode.json-simple:json-simple:1.1'
+
+}
+
+configurations {
+	cucumberRuntime {
+		extendsFrom testImplementation
+	}
+}
+
+
+test {
+	useJUnitPlatform()
+}
+
+protobuf {
+	protoc {
+		artifact = "com.google.protobuf:protoc:3.19.2"
+	}
+	plugins {
+		grpc {
+			artifact = 'io.grpc:protoc-gen-grpc-java:1.44.0'
+		}
+	}
+	generateProtoTasks {
+		all()*.plugins {
+			grpc {}
+		}
+	}
+
+}

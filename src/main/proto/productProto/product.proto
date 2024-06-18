@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package minch.bpa.ordering.product.v1alpha1;
+
+import "google/api/annotations.proto";
+
+// API:s for getting product information
+service ProductConfigurationService {
+    // Use this call to get product configurations. The "ProductConfig" resource is a global singleton
+    // resource containing all possible product configuration options for multiple product types.
+    rpc ListProductConfigs (ListProductConfigsRequest) returns (ListProductConfigsResponse) {
+        option (google.api.http) = {
+            get: "/v1alpha1/products"
+        };
+    }
+}
+
+// Request format for product config
+message ListProductConfigsRequest {
+    // Optional. When provided only return product config for this product name.
+    string product_name = 1;
+}
+
+// Response format for product config
+message ListProductConfigsResponse {
+    // List of product configs
+    repeated ProductConfig product_config = 1;
+}
+
+// Product config
+message ProductConfig {
+    // Product name
+    string product_name = 1;
+    // Product list of configs
+    repeated Config configs = 2;
+}
+
+// Configurations
+message Config {
+    // Destinations
+    repeated string destinations = 1;
+    // Apps
+    repeated string apps = 2;
+    // Channels
+    repeated string channel = 3;
+    // Use cases. Common fields shared between all products
+    map<string, string> use_cases = 4;
+}
+

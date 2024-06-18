@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+package minch.bpa.ordering.productorder.v1alpha1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// APIs for managing Product Orders information
+service ProductOrderService {
+    // Lists all accounts.
+    rpc ListProductOrders (google.protobuf.Empty) returns (ListProductOrdersResponse) {
+        option (google.api.http) = {
+            get: "/v1alpha1/product_orders"
+        };
+    }
+
+    // Get a Single Product Order by Id
+    rpc GetProductOrder (GetProductOrderRequest) returns (ProductOrder) {
+        option (google.api.http) =
+        {
+            get: "/v1alpha1/product_orders/{product_order_id}"
+        };
+    }
+
+    // Creates a new Product Order.
+    rpc CreateProductOrder (CreateProductOrderRequest) returns (ProductOrder) {
+        option (google.api.http) = {
+            post: "/v1alpha1/product_orders"
+            body: "product_order"
+        };
+    }
+
+    // Updates an existing Product Order.
+    rpc UpdateProductOrder (UpdateProductOrderRequest) returns (ProductOrder) {
+        option (google.api.http) = {
+            patch: "/v1alpha1/product_order/{product_order.account_id}"
+            body: "product_order"
+        };
+    }
+
+    // Deletes an existing account.
+    rpc DeleteProductOrder (DeleteProductOrderRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1alpha1/product_orders/{product_order_id}"
+        };
+    }
+
+}
+
+//Response format for Product Orders List
+message ListProductOrdersResponse {
+    // Collection of Product Orders.
+    repeated ProductOrder product_orders = 1;
+}
+
+// Request format for get Product Orders
+message GetProductOrderRequest {
+    // Product Order id
+    string product_order_id = 1;
+}
+
+// The request to create a new Product Order.
+message CreateProductOrderRequest {
+    // Required. The Product Order to create.
+    ProductOrder product_order = 1;
+}
+
+// The request to update an existing account.
+message UpdateProductOrderRequest {
+    // Required. The Product Order to update.
+    ProductOrder product_order = 1;
+}
+
+// The request to delete an existing account.
+message DeleteProductOrderRequest {
+    // Unique identifier of the Product Order to be deleted.
+    string product_order_id = 1;
+}
+
+
+// Response format for process order
+message ProductOrder {
+    // Product Order id
+    string id = 1;
+    // Order name
+    string name = 2;
+    // Order description
+    string description = 3;
+    // Enum Product Order status
+    enum ProductOrderStatus {
+        // Not specified.
+        STATUS_UNSPECIFIED = 0;
+        // Enum Draft
+        DRAFT = 1;
+        //Enum In Progress
+        IN_PROGRESS = 2;
+        //Enum Fulfilled
+        FULFILLED = 3;
+        //Enum Error
+        ERROR = 4;
+        //Enum Cancelled
+        CANCELLED = 5;
+    }
+    // Enum status
+    ProductOrderStatus product_order_status = 4;
+    // minch Account Id
+    string minch_account_id = 5;
+    // Fulfillment Date
+    google.protobuf.Timestamp fulfillment_date = 6;
+    // Created By
+    string created_by = 7;
+    // Created Date
+    google.protobuf.Timestamp created_date = 8;
+    // Created By
+    string last_modified_by = 9;
+    // Created Date
+    google.protobuf.Timestamp last_modified_date = 10;
+    // Product Order Items
+    repeated ProductOrderItem product_order_items = 11;
+}
+
+// Process order steps
+message ProductOrderItem {
+    // Product Order Item id
+    string id = 1;
+    // Project Id (this is a reference to the project from Account Model)
+    string project_id = 2;
+    // Product Id from BPA's internal Product Catalog
+    string product_id = 3;
+    // Reference to a Provisioning Order
+    string provisioning_order_id = 4;
+
+    // Enum Provisioning Type
+    enum ProvisioningType {
+        // Not specified.
+        TYPE_UNSPECIFIED = 0;
+        // Enum auto
+        AUTO = 1;
+        //  Enum manual
+        MANUAL = 2;
+        //  Enum ticket
+        TICKET = 3;
+    }
+    // Enum step status
+    ProvisioningType provisioning_type = 5;
+    // Set of configurations in a JSON stringified format
+    string provisioning_configs = 6;
+    // Created By
+    string created_by = 7;
+    // Created Date
+    google.protobuf.Timestamp created_date = 8;
+    // Created By
+    string last_modified_by = 9;
+    // Created Date
+    google.protobuf.Timestamp last_modified_date = 10;
+}

@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+package minch.account.v1alpha1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "com.minch.account.v1alpha1";
+option java_outer_classname = "AccountProto";
+option go_package = "minch.com/account/v1alpha1;account";
+option php_namespace = "minch\\Account\\V1Alpha1";
+option csharp_namespace = "minch.Account.V1Alpha1";
+
+// Creates and manages accounts.
+service AccountService {
+
+  // Lists all accounts.
+  rpc ListAccounts (ListAccountsRequest) returns (ListAccountsResponse) {
+  }
+
+  // Get a single account by id.
+  rpc GetAccount (GetAccountRequest) returns (Account) {
+  }
+
+  // Creates a new account.
+  rpc CreateAccount (CreateAccountRequest) returns (Account) {
+  }
+
+  // Updates an existing account.
+  rpc UpdateAccount (UpdateAccountRequest) returns (Account) {
+  }
+
+  // Deletes an existing account.
+  rpc DeleteAccount (DeleteAccountRequest) returns (google.protobuf.Empty) {
+  }
+}
+
+// Accounts are used to logically group a set of product services.
+message Account {
+  // Output only. Unique account identifier.
+  string account_id = 1;
+  // Required. Nonempty, nonunique display name of the account.
+  string display_name = 2;
+  // Output only.
+  google.protobuf.Timestamp create_time = 3;
+  // Output only.
+  google.protobuf.Timestamp update_time = 4;
+  // Output only. The current deleted state of the account.
+  bool deleted = 5;
+  // Optional. A map of labels, string key-value pairs.
+  map<string, string> labels = 6;
+}
+
+// The request to get all accounts.
+message ListAccountsRequest {
+  // Optional. The maximum number of results to return in a single response, must be in range 1-1000.
+  // If not specified, the default value of 100 is used.
+  int32 page_size = 1;
+  // Optional. The pagination token returned in an earlier response.
+  string page_token = 2;
+  // Optional. A flag specifying whether to return accounts that have been deleted.
+  bool show_deleted = 3;
+  // Optional. If non-empty then only accounts containing all of the specified labels will be returned.
+  map<string, string> labels = 4;
+}
+
+// The response containing the accounts.
+message ListAccountsResponse {
+  // Collection of accounts.
+  repeated Account accounts = 1;
+  // The next pagination token or an empty value if no more results.
+  string next_page_token = 2;
+}
+
+// The request to get a single account.
+message GetAccountRequest {
+  // Required. A unique id of the account to be returned.
+  string account_id = 1;
+}
+
+// The request to create a new account.
+message CreateAccountRequest {
+  // Optional. A unique string id used for detecting duplicated requests.
+  string request_id = 1;
+  // Required. The account to create.
+  Account account = 2;
+}
+
+// The request to update an existing account.
+message UpdateAccountRequest {
+  // Optional. A unique string id used for detecting duplicated requests.
+  string request_id = 1;
+  // Required. The account to update.
+  Account account = 2;
+  // Optional. The update mask for performing partial update on a resource.
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+// The request to delete an existing account.
+message DeleteAccountRequest {
+  // Required. A unique id of the account to be deleted.
+  string account_id = 1;
+}
+
+// An event emitted by the service to notify external systems of the data changes.
+message AccountEvent {
+  // A unique id of the event.
+  string event_id = 1;
+
+  // Event container.
+  oneof event {
+    // Account created event.
+    AccountCreated created = 2;
+    // Account updated event.
+    AccountUpdated updated = 3;
+    // Account deleted event.
+    AccountDeleted deleted = 4;
+  }
+
+  // Account created event.
+  message AccountCreated {
+    // The created account.
+    Account account = 1;
+  }
+
+  // Account updated event.
+  message AccountUpdated {
+    // The updated account.
+    Account account = 1;
+  }
+
+  // Account deleted event.
+  message AccountDeleted {
+    // The deleted account id.
+    string account_id = 1;
+  }
+}

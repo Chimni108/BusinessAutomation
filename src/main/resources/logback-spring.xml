@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <contextName>bpa-test</contextName>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <springProfile name="prod, staging">
+        <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                <layout class="com.minch.bpa.common.util.JsonLogLayout">
+                    <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+                    <appendLineSeparator>true</appendLineSeparator>
+                    <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>
+                </layout>
+            </encoder>
+        </appender>
+
+        <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="JSON"/>
+            <queueSize>2048</queueSize>
+            <neverBlock>true</neverBlock>
+        </appender>
+
+        <logger name="com.minch" level="DEBUG" additivity="false">
+            <appender-ref ref="JSON"/>
+        </logger>
+
+        <logger name="org.springframework.web" level="WARN">
+            <appender-ref ref="JSON"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="JSON"/>
+        </root>
+    </springProfile>
+
+
+</configuration>

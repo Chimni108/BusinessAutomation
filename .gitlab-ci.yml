@@ -1,0 +1,89 @@
+###################################
+### Pipeline Scripts
+###################################
+stages:
+  - build
+  - test
+  - code-quality
+  - publish
+  - scans
+  - staging
+  - e2etest
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+###################################
+### Build
+###################################
+build-java-project:
+  stage: build
+  script:
+    - pwd
+    - ls
+    - echo "Compiling the code..."
+    - chmod u+x gradlew
+##    - gradlew clean build
+    - echo "Compile complete."
+    - ls
+  artifacts:
+    paths:
+ ###     - build/gitlab-runner/
+      - build/libs/*.jar
+  only:
+    - dev
+
+###################################
+### Test
+###################################
+bpa-test:
+  stage: test
+  script:
+    - pwd
+    - ls
+    - ./gradlew clean
+    - ./gradlew test
+    - ./gradlew jacocoMergeCoverage
+    - sleep 60s
+    - ls
+    - ls **/build/jacoco/
+    - ls -lh build/jacoco
+  artifacts:
+    when: always
+    paths:
+      - "*/build/libs/*.jar"
+      - "*/test-output/"
+      - "build/jacoco/allTestCoverage.exec"
+      - "build/reports/jacoco/jacocoMergeCoverage/jacocoMergeCoverage.xml"
+      - "build/reports/jacoco/jacocoMergeCoverage/html/**"
+      - '**/build/test-results/**/TEST-*.xml'
+  only:
+    - dev
+
+code-quality:
+  stage: code-quality
+  script:
+    - echo "code quality"
+
+publish-job:
+  stage: publish
+  script:
+    - echo "publish code"
+
+scans-jobs:
+  stage: scans
+  script:
+    - echo "scan code"
+
+staging-jobs:
+  stage: staging
+  script:
+    - echo "staging environment"
+
+e2etest-jobs:
+  stage: e2etest
+  script:
+    - echo "e2e run"
+
+
+
